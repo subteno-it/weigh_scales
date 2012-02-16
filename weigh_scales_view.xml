@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<openerp>
+    <data>
+        ##############################################################################
+        #
+        #    weigh_scales module for OpenERP, Allow to manage weigh scales from OpenERP
+        #    Copyright (C) 2012 SYLEAM Info Services ([http://www.Syleam.fr/]) 
+        #              Sylvain Garancher [sylvain.garancher@syleam.fr]
+        #
+        #    This file is a part of weigh_scales
+        #
+        #    weigh_scales is free software: you can redistribute it and/or modify
+        #    it under the terms of the GNU Affero General Public License as published by
+        #    the Free Software Foundation, either version 3 of the License, or
+        #    (at your option) any later version.
+        #
+        #    weigh_scales is distributed in the hope that it will be useful,
+        #    but WITHOUT ANY WARRANTY; without even the implied warranty of
+        #    MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+        #    GNU Affero General Public License for more details.
+        #
+        #    You should have received a copy of the GNU Affero General Public License
+        #    along with this program.  If not, see [http://www.gnu.org/licenses/].
+        #
+        ##############################################################################
+
+        <menuitem id="menu_weigh_scales_main" parent="base.menu_tools" sequence="10" name="Weigh Scales"/>
+        <record id="view_weigh_scale_tree" model="ir.ui.view">
+            <field name="name">weigh.scale.tree</field>
+            <field name="model">weigh.scale</field>
+            <field name="type">tree</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <tree string="Weigh Scales">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="hostname"/>
+                    <field name="port"/>
+                </tree>
+            </field>
+        </record>
+        <record id="view_weigh_scale_form" model="ir.ui.view">
+            <field name="name">weigh.scale.form</field>
+            <field name="model">weigh.scale</field>
+            <field name="type">form</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <form string="Weigh Scales">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="hostname"/>
+                    <field name="port"/>
+                </form>
+            </field>
+        </record>
+        <record id="view_weigh_scale_search" model="ir.ui.view">
+            <field name="name">weigh.scale.search</field>
+            <field name="model">weigh.scale</field>
+            <field name="type">search</field>
+            <field name="priority" eval="8"/>
+            <field name="arch" type="xml">
+                <search string="Weigh Scales">
+                    <field name="name"/>
+                    <field name="type"/>
+                    <field name="hostname"/>
+                    <field name="port"/>
+                </search>
+            </field>
+        </record>
+        <record model="ir.actions.act_window" id="act_open_weigh_scale_view">
+            <field name="name">Weigh Scales</field>
+            <field name="type">ir.actions.act_window</field>
+            <field name="res_model">weigh.scale</field>
+            <field name="view_type">form</field>
+            <field name="view_mode">tree,form</field>
+            <field name="search_view_id" ref="view_weigh_scale_search"/>
+            <field name="domain">[]</field>
+            <field name="context">{}</field>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_weigh_scale_view_form">
+            <field name="act_window_id" ref="act_open_weigh_scale_view"/>
+            <field name="sequence" eval="20"/>
+            <field name="view_mode">form</field>
+            <field name="view_id" ref="view_weigh_scale_form"/>
+        </record>
+        <record model="ir.actions.act_window.view" id="act_open_weigh_scale_view_tree">
+            <field name="act_window_id" ref="act_open_weigh_scale_view"/>
+            <field name="sequence" eval="10"/>
+            <field name="view_mode">tree</field>
+            <field name="view_id" ref="view_weigh_scale_tree"/>
+        </record>
+        <menuitem id="menu_weigh_scale" parent="menu_weigh_scales_main" sequence="20" action="act_open_weigh_scale_view"/>
+
+    </data>
+</openerp>
