@@ -1,0 +1,87 @@
+# Translation of OpenERP Server.
+# This file contains the translation of the following modules:
+#	* weigh_scales
+#
+msgid ""
+msgstr ""
+"Project-Id-Version: OpenERP Server 6.0.3\n"
+"Report-Msgid-Bugs-To: support@openerp.com\n"
+"POT-Creation-Date: 2012-02-17 15:46+0000\n"
+"PO-Revision-Date: 2012-02-17 15:46+0000\n"
+"Last-Translator: <>\n"
+"Language-Team: \n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: \n"
+"Plural-Forms: \n"
+
+#. module: weigh_scales
+#: model:ir.module.module,description:weigh_scales.module_meta_information
+msgid "This module allows to manage weigh scales from OpenERP.\n"
+"\n"
+"This module needs the \"extensions\" python module :\n"
+"$ pip install extension\n"
+"\n"
+"Weigh scales drivers are managed as plugins by the \"extensions\" python module.\n"
+"You can easily add drivers on your system, by registering them in the group 'openerp.addons.weigh_scales.drivers'.\n"
+"The name of the plugin is the displayed name in OpenERP for the driver.\n"
+"\n"
+"For example, the CD11 IP driver is registered like this :\n"
+"register('openerp.addons.weigh_scales.drivers', 'CD11 (IP)', 'weigh_scales.drivers.cd11:cd11_ip')\n"
+""
+msgstr ""
+
+#. module: weigh_scales
+#: field:weigh.scale,name:0
+msgid "Name"
+msgstr ""
+
+#. module: weigh_scales
+#: help:weigh.scale,type:0
+msgid "Type of weigh_scale, used to select the good driver for communication"
+msgstr ""
+
+#. module: weigh_scales
+#: field:weigh.scale,type:0
+msgid "Type"
+msgstr ""
+
+#. module: weigh_scales
+#: field:weigh.scale,hostname:0
+msgid "Hostname"
+msgstr ""
+
+#. module: weigh_scales
+#: model:ir.model,name:weigh_scales.model_weigh_scale
+msgid " Weigh Scale"
+msgstr ""
+
+#. module: weigh_scales
+#: help:weigh.scale,port:0
+msgid "Port of the weigh scale"
+msgstr ""
+
+#. module: weigh_scales
+#: model:ir.actions.act_window,name:weigh_scales.act_open_weigh_scale_view
+#: model:ir.module.module,shortdesc:weigh_scales.module_meta_information
+#: model:ir.ui.menu,name:weigh_scales.menu_weigh_scale
+#: model:ir.ui.menu,name:weigh_scales.menu_weigh_scales_main
+#: view:weigh.scale:0
+msgid "Weigh Scales"
+msgstr ""
+
+#. module: weigh_scales
+#: help:weigh.scale,hostname:0
+msgid "Hostname or IP address of the weigh scale"
+msgstr ""
+
+#. module: weigh_scales
+#: help:weigh.scale,name:0
+msgid "Name of the weigh scale"
+msgstr ""
+
+#. module: weigh_scales
+#: field:weigh.scale,port:0
+msgid "Port"
+msgstr ""
+
