@@ -40,7 +40,7 @@ class weigh_scale(osv.osv):
         for type in get(group='openerp.addons.weigh_scales.drivers'):
             types.append((type.name, type.name))
 
-        return types
+        return sorted(types)
 
     _columns = {
         'name': fields.char('Name', size=64, required=True, help='Name of the weigh scale'),
