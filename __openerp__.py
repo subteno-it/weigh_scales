@@ -26,10 +26,18 @@
     'name': 'Weigh Scales',
     'version': '0.1',
     'category': 'Custom',
-    'description': """Allow to manage weigh scales from OpenERP
+    'description': """This module allows to manage weigh scales from OpenERP.
 
-This module needs the "extensions" python module.
-$ pip install extensions""",
+This module needs the "extensions" python module :
+$ pip install extension
+
+Weigh scales drivers are managed as plugins by the "extensions" python module.
+You can easily add drivers on your system, by registering them in the group 'openerp.addons.weigh_scales.drivers'.
+The name of the plugin is the displayed name in OpenERP for the driver.
+
+For example, the CD11 IP driver is registered like this :
+register('openerp.addons.weigh_scales.drivers', 'CD11 (IP)', 'weigh_scales.drivers.cd11:cd11_ip')
+""",
     'author': 'SYLEAM',
     'website': 'http://www.syleam.fr/',
     'depends': [
