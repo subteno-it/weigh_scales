@@ -43,6 +43,7 @@ register('openerp.addons.weigh_scales.drivers', 'CD11 (IP)', 'weigh_scales.drive
     'depends': [
         'base',
         'base_tools',
+        'product',
     ],
     'init_xml': [],
     'images': [],
