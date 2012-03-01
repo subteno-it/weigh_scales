@@ -50,7 +50,8 @@ class socket_connection(object):
         Send a command and return its response
         """
         self.open_connection()
-        self._connection.send('%s\n' % command)
+        # TODO : Check if all weigh scales understand the \r terminator, or if we must specify the terminator in each driver
+        self._connection.send('%s\r' % command)
         response = self._connection.recv(4096)
         self.close_connection()
         return response
