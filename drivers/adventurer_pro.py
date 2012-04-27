@@ -41,9 +41,9 @@ class adventurer_pro_ip(weigh_scale_ip):
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
         # Call the weigh scale to get a weight
-        value = self.send_command('P')
+        value = self.send_command('P\r')
         weight = float(value)
-        value = self.send_command('PU')
+        value = self.send_command('PU\r')
         uom_name = value.strip()
 
         return (weight, uom_name)

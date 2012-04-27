@@ -41,14 +41,14 @@ class ranger_ip(weigh_scale_ip):
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
         # Call the weigh scale to get a value
-        value = self.send_command('P')
+        value = self.send_command('P\r\n')
 
-        if len(value) >= 16 and value[14] != '?' and value[15:18] == 'NET':
+        if len(value) >= 15 and value[14] != '?':  # and value[15:18] == 'NET':
             # Extract weight and uom name from the returned value
             weight = float(value[2:11])
             if value[0] == '-':
                 weight *= -1
-            uom_name = value[11:13].strip()
+            uom_name = value[12:14].strip()
 
             return (weight, uom_name)
 

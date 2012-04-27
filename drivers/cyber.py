@@ -41,7 +41,7 @@ class cyber_ip(weigh_scale_ip):
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
         # Call the weigh scale to get a value
-        value = self.send_command('q$')
+        value = self.send_command('q$\r')
 
         if len(value) >= 35 and value[24] & 0x1:
             # Extract weight and uom name from the returned value

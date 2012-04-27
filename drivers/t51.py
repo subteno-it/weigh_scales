@@ -41,7 +41,7 @@ class t51_ip(weigh_scale_ip):
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
         # Call the weigh scale to get a value
-        value = self.send_command('P')
+        value = self.send_command('P\r\n')
 
         if len(value) >= 15 and value[14] != '?':
             # Extract weight and uom name from the returned value
