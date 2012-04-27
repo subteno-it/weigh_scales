@@ -33,6 +33,7 @@
             <field name="arch" type="xml">
                 <tree string="Weigh Scales">
                     <field name="name"/>
+                    <field name="code"/>
                     <field name="type"/>
                     <field name="hostname"/>
                     <field name="port"/>
@@ -47,6 +48,7 @@
             <field name="arch" type="xml">
                 <form string="Weigh Scales">
                     <field name="name"/>
+                    <field name="code"/>
                     <field name="type"/>
                     <field name="hostname"/>
                     <field name="port"/>
@@ -61,6 +63,7 @@
             <field name="arch" type="xml">
                 <search string="Weigh Scales">
                     <field name="name"/>
+                    <field name="code"/>
                     <field name="type"/>
                     <field name="hostname"/>
                     <field name="port"/>

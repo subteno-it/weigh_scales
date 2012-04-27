@@ -44,6 +44,7 @@ class weigh_scale(osv.osv):
 
     _columns = {
         'name': fields.char('Name', size=64, required=True, help='Name of the weigh scale'),
+        'code': fields.char('Code', size=16, required=True, help='code of the weigh scale'),
         'type': fields.selection(_get_types, 'Type', size=32, required=True, help='Type of weigh_scale, used to select the good driver for communication'),
         'hostname': fields.char('Hostname', size=64, required=True, help='Hostname or IP address of the weigh scale'),
         'port': fields.integer('Port', required=True, help='Port of the weigh scale'),
