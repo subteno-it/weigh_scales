@@ -58,14 +58,14 @@ class socket_connection(object):
         # Try to open connection to the weigh scale, and raise an error if connection fails
         try:
             self.open_connection()
+            # TODO : Check if all weigh scales understand the \r terminator, or if we must specify the terminator in each driver
+            self._connection.sendall('%s\r' % command)
+            response = self._connection.makefile().readline()
+            self.close_connection()
         except:
             logger.warning('Exception: %s' % reduce(lambda x, y: x + y, traceback.format_exception(sys.exc_type, sys.exc_value, sys.exc_traceback)))
             raise osv.except_osv(_('Error'), _('Connection to the weigh scale failed.\nPlease check connectivity and configuration.'))
 
-        # TODO : Check if all weigh scales understand the \r terminator, or if we must specify the terminator in each driver
-        self._connection.send('%s\r' % command)
-        response = self._connection.recv(4096)
-        self.close_connection()
         return response
 
     def close_connection(self):
