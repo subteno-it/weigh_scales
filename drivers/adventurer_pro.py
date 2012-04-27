@@ -40,11 +40,12 @@ class adventurer_pro_ip(weigh_scale_ip):
         """
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
-        # TODO : Call the weigh scale to get a value
-        value = self.send_command()
+        # Call the weigh scale to get a weight
+        value = self.send_command('P')
+        weight = float(value)
+        value = self.send_command('PU')
+        uom_name = value.strip()
 
-        # TODO : Extract weight and uom name from the returned value
-
-        return None
+        return (weight, uom_name)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
