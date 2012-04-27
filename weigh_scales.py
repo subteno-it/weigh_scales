@@ -22,9 +22,14 @@
 #
 ##############################################################################
 
+import sys
+import traceback
 from osv import osv
 from osv import fields
 from extensions import get
+from tools.translate import _
+import logging
+logger = logging.getLogger('weigh_scales:common')
 
 
 class weigh_scale(osv.osv):
@@ -71,8 +76,13 @@ class weigh_scale(osv.osv):
         for weigh_scale in self.browse(cr, uid, ids, context=context):
             # Retrieve values from the weigh scale
             driver = self._get_driver(cr, uid, weigh_scale, context=context)
-            response = driver.read_weight()
-            driver.close_connection()
+            try:
+                driver.open_connection()
+                response = driver.read_weight()
+                driver.close_connection()
+            except:
+                logger.warning('Exception: %s' % reduce(lambda x, y: x + y, traceback.format_exception(sys.exc_type, sys.exc_value, sys.exc_traceback)))
+                raise osv.except_osv(_('Error'), _('Connection to the weigh scale failed.\nPlease check connectivity and configuration.'))
 
             # Generate return value
             if response is None:
