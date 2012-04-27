@@ -47,9 +47,9 @@ class socket_connection(object):
 
     def open_connection(self):
         """
-        Open a new socket connection
+        Open a new socket connection, with 5 seconds as default timeout
         """
-        self._connection = socket.create_connection((self.hostname, self.port))
+        self._connection = socket.create_connection((self.hostname, self.port), 5)
 
     def send_command(self, command):
         """
