@@ -22,16 +22,32 @@
 #
 ##############################################################################
 
-from extensions import register
+from common import weigh_scale_ip
 
-register('openerp.addons.weigh_scales.drivers', 'Adventurer Pro (IP)', 'weigh_scales.drivers.adventurer_pro:adventurer_pro_ip')
-register('openerp.addons.weigh_scales.drivers', 'CD11 (IP)', 'weigh_scales.drivers.cd11:cd11_ip')
-register('openerp.addons.weigh_scales.drivers', 'CW11 (IP)', 'weigh_scales.drivers.cw11:cw11_ip')
-register('openerp.addons.weigh_scales.drivers', 'Cyber (IP)', 'weigh_scales.drivers.cyber:cyber_ip')
-register('openerp.addons.weigh_scales.drivers', 'E1105 (IP)', 'weigh_scales.drivers.e1105:e1105_ip')
-register('openerp.addons.weigh_scales.drivers', 'Ranger (IP)', 'weigh_scales.drivers.ranger:ranger_ip')
-register('openerp.addons.weigh_scales.drivers', 'T31 (IP)', 'weigh_scales.drivers.t31:t31_ip')
-register('openerp.addons.weigh_scales.drivers', 'T51 (IP)', 'weigh_scales.drivers.t51:t51_ip')
-register('openerp.addons.weigh_scales.drivers', 'T71 (IP)', 'weigh_scales.drivers.t71:t71_ip')
+
+class e1105_ip(weigh_scale_ip):
+    """
+    IP driver for the E1105 series weigh scales
+    """
+
+    def __init__(self, hostname, port, timeout=10000):
+        """
+        Initialize the driver
+        """
+        super(e1105_ip, self).__init__(hostname, port, timeout=timeout)
+
+    def _get_weight(self):
+        """
+        Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
+        """
+        # Call the weigh scale to get a value
+        STX = chr(0x002)
+        ESC = chr(0x027)
+        ENQ = chr(0x005)
+        value = self.send_command('%s%sA%s\r\n' % (STX, ESC, ENQ)).split()
+        weight = float(value[0].strip())
+        uom_name = value[1].strip()
+
+        return (weight, uom_name)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
