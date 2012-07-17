@@ -41,15 +41,11 @@ class cyber_ip(weigh_scale_ip):
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
         # Call the weigh scale to get a value
-        value = self.send_command('q$\r')
+        value = self.send_command('$\r\n')
+        weight = float(value[1:])
+        # TODO : New request to get the real uom name
+        uom_name = 'kg'
 
-        if len(value) >= 35 and value[24] & 0x1:
-            # Extract weight and uom name from the returned value
-            weight = float(value[25:33])
-            uom_name = value[33:35]
-
-            return (weight, uom_name)
-
-        return None
+        return (weight, uom_name)
 
 # vim:expandtab:smartindent:tabstop=4:softtabstop=4:shiftwidth=4:
