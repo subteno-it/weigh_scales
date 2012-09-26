@@ -42,7 +42,7 @@ class e1105_ip(weigh_scale_ip):
         """
         # Call the weigh scale to get a value
         STX = chr(0x002)
-        ESC = chr(0x027)
+        ESC = chr(0x01b)
         ENQ = chr(0x005)
         value = self.send_command('%s%sA%s\r\n' % (STX, ESC, ENQ)).split()
         weight = float(value[0].strip())
