@@ -41,9 +41,9 @@ class t71_ip(weigh_scale_ip):
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
         # Call the weigh scale to get a value
-        value = self.send_command('P\r\n')
+        value = self.send_command('P\r\n').split()
 
-        if len(value) >= 4 and value[2] != '?':  # and value[3] == 'NET':
+        if len(value) >= 2:
             # Extract weight and uom name from the returned value
             weight = float(value[0])
             uom_name = value[1]
