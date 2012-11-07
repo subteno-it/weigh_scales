@@ -42,7 +42,7 @@ class cyber_ip(weigh_scale_ip):
         """
         # Call the weigh scale to get a value
         value = self.send_command('$\r\n')
-        weight = float(value[1:])
+        weight = float(value[2:-1])
         # TODO : New request to get the real uom name
         uom_name = 'kg'
 
