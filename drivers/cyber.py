@@ -41,8 +41,8 @@ class cyber_ip(weigh_scale_ip):
         Read the current weight on the weigh scale and return a 2-tuple strings (weight, uom_name)
         """
         # Call the weigh scale to get a value
-        value = self.send_command('$\r\n')
-        weight = float(value[2:-1])
+        value = self.send_command('$\r\n').split()[1]
+        weight = float(value)
         # TODO : New request to get the real uom name
         uom_name = 'kg'
 
