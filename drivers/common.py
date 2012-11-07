@@ -45,12 +45,12 @@ class socket_connection(object):
         """
         self._connection = socket.create_connection((self.hostname, self.port), 5)
 
-    def send_command(self, command):
+    def send_command(self, command, buffer_size=16):
         """
         Send a command and return its response
         """
         self._connection.sendall(command)
-        response = self._connection.makefile().readline()
+        response = self._connection.recv(buffer_size)
 
         return response
 
