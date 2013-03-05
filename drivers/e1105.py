@@ -44,7 +44,8 @@ class e1105_ip(weigh_scale_ip):
         STX = chr(0x002)
         ESC = chr(0x01b)
         ENQ = chr(0x005)
-        value = self.send_command('%s%sA%s\r\n' % (STX, ESC, ENQ)).split()
+        EOT = chr(0x003)
+        value = self.send_command('%s%sB%s\r\n' % (STX, ESC, ENQ), suffix=EOT).split()
         weight = float(value[1].strip())
         uom_name = value[2].strip()
 
